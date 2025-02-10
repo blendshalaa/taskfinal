@@ -1,0 +1,121 @@
+/* multiselect.css */
+
+
+.select__control {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    min-height: 40px;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .select__control--is-focused {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+  
+  .select__control--menu-is-open {
+    border-color: #3b82f6;
+  }
+  
+
+  .select__menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 4px;
+    background-color: #ffffff;
+  }
+  
+  .select__menu-list {
+    padding: 8px;
+  }
+  
+  .select__option {
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .select__option--is-focused {
+    background-color: #f3f4f6;
+  }
+  
+  .select__option--is-selected {
+    background-color: #3b82f6;
+    color: #ffffff;
+  }
+  
+
+  .select__multi-value {
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    padding: 2px 6px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .select__multi-value__label {
+    font-size: 14px;
+    color: #1f2937;
+  }
+  
+  .select__multi-value__remove {
+    color: #6b7280;
+    cursor: pointer;
+    margin-left: 4px;
+    transition: color 0.2s ease;
+  }
+  
+  .select__multi-value__remove:hover {
+    color: #ef4444;
+  }
+  
+
+  .select__placeholder {
+    color: #9ca3af;
+    font-size: 14px;
+  }
+  
+  .select__input {
+    color: #1f2937;
+    font-size: 14px;
+  }
+  
+
+  .select__loading-indicator {
+    color: #3b82f6;
+  }
+  
+
+  .select__control--is-disabled {
+    background-color: #f3f4f6;
+    border-color: #e5e7eb;
+    cursor: not-allowed;
+  }
+  
+  .select__control--is-disabled .select__placeholder {
+    color: #9ca3af;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .select__loading-indicator {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #3b82f6;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+  }

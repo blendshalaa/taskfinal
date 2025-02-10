@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Select, { MultiValue } from 'react-select';
+import './multiselect.css'; // Import the CSS file
 
 interface Option {
   value: string;
@@ -7,13 +8,13 @@ interface Option {
 }
 
 interface MultiSelectProps {
-    options: { value: string; label: string }[]; 
-    placeholder?: string; 
-    isLoading?: boolean; 
-    defaultValue?: { value: string; label: string }[]; 
-    onChange?: (selected: { value: string; label: string }[]) => void; 
-    isDisabled?: boolean; 
-  }
+  options: Option[];
+  placeholder?: string;
+  isLoading?: boolean;
+  defaultValue?: Option[];
+  onChange?: (selected: Option[]) => void;
+  isDisabled?: boolean;
+}
 
 export const MultiSelect: React.FC<MultiSelectProps> = ({
   options,
@@ -21,6 +22,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   isLoading = false,
   defaultValue = [],
   onChange,
+  isDisabled = false,
 }) => {
   const [selected, setSelected] = useState<Option[]>(defaultValue);
 
@@ -32,18 +34,23 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 
   return (
     <div>
-      {isLoading && <p>Loading...</p>}
-      {!isLoading && (
-        <Select
-          isMulti
-          options={options}
-          placeholder={placeholder}
-          value={selected}
-          onChange={handleOnChange}
-          className="basic-multi-select"
-          classNamePrefix="select"
-        />
-      )}
+      <Select
+        isMulti
+        options={options}
+        placeholder={placeholder}
+        value={selected}
+        onChange={handleOnChange}
+        isDisabled={isDisabled}
+        isLoading={isLoading}
+        className="basic-multi-select"
+        classNamePrefix="select"
+        loadingMessage={() => (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div className="select__loading-indicator" />
+            <span>Loading...</span>
+          </div>
+        )}
+      />
     </div>
   );
 };
